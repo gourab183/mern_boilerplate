@@ -10,7 +10,7 @@ module.exports = {
         publicPath: "/"
     },
     resolve: {
-        extensions: ['.js','.jsx']
+        extensions: ['.js','.jsx','.css']
     },
     devServer: {
         historyApiFallback: true
@@ -20,7 +20,18 @@ module.exports = {
             {
                 test: /\.jsx?/,
                 loader: 'babel-loader'
-            }
+            },{                
+                test: [/.css$|.scss$/],                
+                use:[                    
+                 'style-loader',   
+                 {
+                     loader: 'css-loader',
+                     options: {
+                       modules: true,
+                     },
+                   }              
+                ]            
+              }
         ]
     }
 
